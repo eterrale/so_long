@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cleanup.c                                          :+:      :+:    :+:   */
+/*   free_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 10:40:11 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/20 17:30:36 by ekeisler         ###   ########.fr       */
+/*   Created: 2025/01/22 16:29:35 by ekeisler          #+#    #+#             */
+/*   Updated: 2025/01/22 19:10:38 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	cleanup(t_data *data)
+void	free_map(t_map *map)
 {
-	if (data->img.addr)
-		mlx_destroy_image(data->mlx, data->img.addr);
-	if (data->win)
-		mlx_destroy_window(data->mlx, data->win);
-	mlx_loop_end(data->mlx);
-}
+	int	x;
 
-int	close_window(t_data *data)
-{
-	cleanup(data);
-	return(0);
+	x = 0;
+	while (map->grid[x])
+	{
+		free(map->grid[x]);
+		x++;
+	}
+	free(map->grid);
 }
