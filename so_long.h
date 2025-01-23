@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:25:38 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/22 19:42:15 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/22 20:45:29 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <math.h>
 # include <unistd.h>
 
-# define NUM_IMG 1
+# define NUM_IMG 3
 
 // --------------------------------------- STRUCT 
 
@@ -58,10 +58,14 @@ int		free_game(t_data *data);
 
 // --------------------------------------- MAP FUNCTIONS
 
+int		init_ressources(t_data *data);
+
 int		load_map(const char *filename, t_map *map);
 
 int		load_background(t_data *data);
 
 int		init_window(t_data *data);
+
+void 	render_map(t_data *data);
 
 #endif

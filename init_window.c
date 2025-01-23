@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 19:27:24 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/22 19:40:25 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/22 20:45:02 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	init_window(t_data *data)
 	data->map = map;
 	data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, 960, 540, "PURE IT");
+	init_ressources(data);
 	load_background(data);
+	render_map(data);
 	return (0);
 }

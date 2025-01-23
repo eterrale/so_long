@@ -6,12 +6,30 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:51:15 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/22 19:01:40 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/22 20:40:45 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include <fcntl.h>
+
+static void	size_map(t_map *map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (map->grid[i])
+	{
+		while (map->grid[i][j])
+			j++;
+		j = 0;
+		i++;
+	}
+	map->height = j;
+	map->width = i;
+}
 
 int	load_map(const char *filename, t_map *map)
 {
@@ -38,5 +56,6 @@ int	load_map(const char *filename, t_map *map)
 	close(fd);
 	map->grid = ft_split(buf, '\n');
 	free(buf);
+	size_map(map);
 	return (0);
 }
