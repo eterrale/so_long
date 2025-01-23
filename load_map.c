@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:51:15 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/22 20:40:45 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/23 12:54:27 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,15 @@ static void	size_map(t_map *map)
 	int	j;
 
 	i = 0;
-	j = 0;
 	while (map->grid[i])
 	{
+		j = 0;
 		while (map->grid[i][j])
 			j++;
-		j = 0;
 		i++;
 	}
-	map->height = j;
-	map->width = i;
+	map->height = i;
+	map->width = j;
 }
 
 int	load_map(const char *filename, t_map *map)

@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:25:38 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/22 20:45:29 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:56:15 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,15 @@
 # include <math.h>
 # include <unistd.h>
 
-# define NUM_IMG 3
+# define NUM_IMG 5
 
 // --------------------------------------- STRUCT 
+
+typedef struct s_player
+{
+	int	*posX;
+	int	*posy;	
+}	t_player;
 
 typedef struct s_image_data
 {
@@ -42,6 +48,7 @@ typedef struct s_data
 	void			*win;
 	t_image_data	img[NUM_IMG];
 	t_map			map;
+	t_player		player;
 }		t_data;
 
 // --------------------------------------- UTILS FUNCTIONS
@@ -66,6 +73,6 @@ int		load_background(t_data *data);
 
 int		init_window(t_data *data);
 
-void 	render_map(t_data *data);
+int 	render_map(t_data *data);
 
 #endif

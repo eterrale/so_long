@@ -1,9 +1,7 @@
 /* XPM */
-static char *_64efaf7a6d543b0d7b9a27b060c721d7jpJ46WtjrzmqqXI[] = {
-/* columns rows colors chars-per-pixel */
-"32 32 1 1 ",
-"  c #A6B04F",
-/* pixels */
+static char * Floor_xpm[] = {
+"32 32 1 1",
+" 	c #969259",
 "                                ",
 "                                ",
 "                                ",
@@ -35,5 +33,4 @@ static char *_64efaf7a6d543b0d7b9a27b060c721d7jpJ46WtjrzmqqXI[] = {
 "                                ",
 "                                ",
 "                                ",
-"                                "
-};
+"                                "};
