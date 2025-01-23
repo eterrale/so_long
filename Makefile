@@ -5,7 +5,7 @@ LDFLAGS = -L$(MINILIB_DIR) -lmlx -lXext -lX11
 NAME = so_long
 
 MAIN_SRC = main.c close_game.c get_next_line.c load_map.c free_map.c init_window.c \
-			load_background.c init_ressources.c render_map.c
+			load_background.c init_ressources.c render_map.c player_move.c
 
 SRC = $(MAIN_SRC)
 

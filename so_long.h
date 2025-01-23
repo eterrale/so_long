@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:25:38 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/23 14:56:15 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:13:34 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 # include <math.h>
 # include <unistd.h>
 
-# define NUM_IMG 5
+# define NUM_IMG 8
 
 // --------------------------------------- STRUCT 
 
 typedef struct s_player
 {
-	int	*posX;
-	int	*posy;	
+	int	posX;
+	int	posY;	
 }	t_player;
 
 typedef struct s_image_data
@@ -74,5 +74,15 @@ int		load_background(t_data *data);
 int		init_window(t_data *data);
 
 int 	render_map(t_data *data);
+
+// --------------------------------------- PLAYER MOVE
+
+int		p_moveforward(t_data *data);
+
+int		p_movebackward(t_data *data);
+
+int		p_moveleft(t_data *data);
+
+int		p_moveright(t_data *data);
 
 #endif
