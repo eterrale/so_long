@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 20:20:06 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/23 16:26:46 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/23 17:13:14 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ int	render_map(t_data *data)
 			if (data->map.grid[i][j] == 'C')
 				mlx_put_image_to_window(data->mlx, data->win,
 					data->img[4].addr, x, y);
-			x += 32;
+			x += 64;
 			j++;
 		}
-		y += 32;
+		y += 64;
 		i++;
 	}
 	return (0);
