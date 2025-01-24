@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:37:33 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/23 16:14:10 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/23 18:12:07 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 int	key_hook(int key, t_data *data)
 {
 	if (key == 119)
-		p_moveforward(data);
+		p_moveforward(data, &data->player, &data->map);
 	if (key == 115)
-		p_movebackward(data);
+		p_movebackward(data, &data->player, &data->map);
 	if (key == 97)
-		p_moveleft(data);
+		p_moveleft(data, &data->player, &data->map);
 	if (key == 100)
-		p_moveright(data);
+		p_moveright(data, &data->player, &data->map);
 	if (key == 0xFF1B)
 		close_game(data);
 	return (0);

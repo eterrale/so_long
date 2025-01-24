@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 20:26:51 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/23 16:24:32 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/23 22:09:18 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ int	init_ressources(t_data *data)
 	data->img[7].addr = mlx_xpm_file_to_image(data->mlx,
 			"ressources/character/Bunny3.xpm", &data->img[7].width,
 			&data->img[7].height);
+	data->img[8].addr = mlx_xpm_file_to_image(data->mlx,
+			"ressources/env/exit.xpm", &data->img[8].width,
+			&data->img[8].height);
 	while (i <= NUM_IMG)
 	{
 		if (!data->img[i].addr)
