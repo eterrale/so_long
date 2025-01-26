@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 19:27:24 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/26 17:19:38 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/26 19:39:03 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ int	init_window(t_data *data)
 	init_ressources(data);
 	load_background(data);
 	render_map(data);
+	ft_putstr_fd("start game...\n", 1);
 	return (0);
 }

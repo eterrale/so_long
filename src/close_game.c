@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 10:40:11 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/26 16:04:03 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/26 19:38:24 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static void	destroy_and_free(t_data *data)
 	}
 	if (data->mlx != NULL)
 		mlx_loop_end(data->mlx);
+	ft_putstr_fd("free all variables..\n", 1);
 }
 
 int	close_game(t_data *data)
