@@ -6,11 +6,11 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:37:33 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/24 04:56:01 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/26 14:59:05 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 #include <stdio.h>
 
 int	key_hook(int key, t_data *data)

@@ -6,15 +6,15 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:25:38 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/24 04:56:09 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/26 15:14:54 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "minilibx/mlx.h"
-# include "libft/libft.h"
+# include "../minilibx/mlx.h"
+# include "../libft/libft.h"
 # include <math.h>
 # include <unistd.h>
 
@@ -57,6 +57,8 @@ typedef struct s_data
 
 // --------------------------------------- UTILS FUNCTIONS
 
+void	print_error(t_data *data);
+
 char	*get_next_line(int fd);
 
 // --------------------------------------- FREE FUNCTIONS
@@ -70,6 +72,8 @@ int		free_game(t_data *data);
 // --------------------------------------- MAP FUNCTIONS
 
 int		init_ressources(t_data *data);
+
+void	check_rules_map(t_data *data);
 
 int		load_map(const char *filename, t_map *map);
 

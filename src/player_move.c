@@ -6,11 +6,11 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 16:00:01 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/24 04:59:51 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/26 14:59:09 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 int	p_moveforward(t_data *data, t_player *player, t_map *map)
 {

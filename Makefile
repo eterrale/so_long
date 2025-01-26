@@ -1,11 +1,13 @@
-CC = cc
 CFLAGS = -Wall -Wextra -Werror
 LDFLAGS = -L$(MINILIB_DIR) -lmlx -lXext -lX11
 
 NAME = so_long
 
-MAIN_SRC = main.c close_game.c get_next_line.c load_map.c free_map.c init_window.c \
-			load_background.c init_ressources.c render_map.c player_move.c
+SRC_DIR = src/
+MAIN_SRC = $(SRC_DIR)main.c $(SRC_DIR)close_game.c $(SRC_DIR)get_next_line.c $(SRC_DIR)load_map.c \
+		   $(SRC_DIR)free_map.c $(SRC_DIR)init_window.c $(SRC_DIR)load_background.c \
+		   $(SRC_DIR)init_ressources.c $(SRC_DIR)render_map.c $(SRC_DIR)player_move.c \
+		   $(SRC_DIR)print_error.c $(SRC_DIR)check_rules_map.c
 
 SRC = $(MAIN_SRC)
 
@@ -14,28 +16,28 @@ LIBFT_DIR = libft
 MINILIB = $(MINILIB_DIR)/libmlx_Linux.a
 LIBFT = $(LIBFT_DIR)/libft.a
 
-HEADERS = so_long.h $(MINILIB_DIR)/mlx.h $(MINILIB_DIR)/mlx_int.h $(LIBFT_DIR)/libft.h
+HEADERS = include/so_long.h $(MINILIB_DIR)/mlx.h $(MINILIB_DIR)/mlx_int.h $(LIBFT_DIR)/libft.h
 
 OBJS_DIR = objects
-OBJS = $(addprefix $(OBJS_DIR)/, $(SRC:.c=.o))
+OBJS = $(addprefix $(OBJS_DIR)/, $(notdir $(SRC:.c=.o)))
 
-all: $(LIBFT) $(MINILIB) $(NAME)
+all: $(OBJS_DIR) $(LIBFT) $(MINILIB) $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(MINILIB)
 		@echo "Creating $(NAME)..."
 		@$(CC) $(OBJS) $(LIBFT) $(MINILIB) $(LDFLAGS) -o $(NAME)
 
-$(OBJS_DIR)/%.o: %.c $(HEADERS)
-		@mkdir -p $(dir $@)
+$(OBJS_DIR)/%.o: $(SRC_DIR)%.c $(HEADERS)
 		$(CC) $(CFLAGS) -c $< -o $@
 
-$(LIBFT): $(HEADERS)
-		@echo "Building libft..."
-		$(MAKE) -C $(LIBFT_DIR) all
+$(OBJS_DIR):
+		@mkdir -p $(OBJS_DIR)
 
-$(MINILIB): $(HEADERS)
-		@echo "Building minilib..."
-		$(MAKE) -C $(MINILIB_DIR) all
+$(LIBFT):
+		@$(MAKE) -C $(LIBFT_DIR)
+
+$(MINILIB):
+		@$(MAKE) -C $(MINILIB_DIR)
 
 clean:
 		@echo "Cleaning object files..."
@@ -47,5 +49,8 @@ fclean: clean
 		@echo "Cleaning binaries..."
 		@rm -rf $(NAME)
 		@$(MAKE) -C $(LIBFT_DIR) fclean
+		@$(MAKE) -C $(MINILIB_DIR) clean
+
+re: fclean all
 
 .PHONY: all clean fclean re

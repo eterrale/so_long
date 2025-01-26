@@ -6,11 +6,11 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:51:15 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/23 12:54:27 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/26 14:59:01 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 #include <fcntl.h>
 
 static void	size_map(t_map *map)

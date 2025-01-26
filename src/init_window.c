@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_map.c                                         :+:      :+:    :+:   */
+/*   init_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/22 16:29:35 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/22 19:10:38 by ekeisler         ###   ########.fr       */
+/*   Created: 2025/01/22 19:27:24 by ekeisler          #+#    #+#             */
+/*   Updated: 2025/01/26 14:58:55 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
-void	free_map(t_map *map)
+int	init_window(t_data *data)
 {
-	int	x;
+	t_map	map;
 
-	x = 0;
-	while (map->grid[x])
-	{
-		free(map->grid[x]);
-		x++;
-	}
-	free(map->grid);
+	load_map("map/map.ber", &map);
+	data->map = map;
+	data->mlx = mlx_init();
+	data->win = mlx_new_window(data->mlx, data->map.width * 64, data->map.height * 64, "PURE IT");
+	init_ressources(data);
+	load_background(data);
+	render_map(data);
+	return (0);
 }

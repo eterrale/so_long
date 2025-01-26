@@ -6,11 +6,11 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 20:26:51 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/23 22:09:18 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/26 14:58:53 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 int	init_ressources(t_data *data)
 {
@@ -48,8 +48,7 @@ int	init_ressources(t_data *data)
 	{
 		if (!data->img[i].addr)
 		{
-			ft_putstr_fd("Error init ressources...", 1);
-			exit(1);
+			print_error(data);
 		}
 		i++;
 	}

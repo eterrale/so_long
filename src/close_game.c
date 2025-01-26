@@ -6,11 +6,11 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 10:40:11 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/22 19:40:17 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/26 14:59:40 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 static void	destroy_and_free(t_data *data)
 {
@@ -19,18 +19,26 @@ static void	destroy_and_free(t_data *data)
 	i = 0;
 	while (i < NUM_IMG)
 	{
-		if (data->img[i].addr)
+		if (data->img[i].addr != NULL)
+		{
 			mlx_destroy_image(data->mlx, data->img[i].addr);
+			data->img[i].addr = NULL;
+		}
 		i++;
 	}
-	if (data->win)
+	if (data->win != NULL)
+	{
 		mlx_destroy_window(data->mlx, data->win);
-	mlx_loop_end(data->mlx);
+		data->win = NULL;
+	}
+	if (data->mlx != NULL)
+		mlx_loop_end(data->mlx);
 }
 
 int	close_game(t_data *data)
 {
 	destroy_and_free(data);
+	ft_putstr_fd("closing game...\n", 1);
 	return (0);
 }
 
