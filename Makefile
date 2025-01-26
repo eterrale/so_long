@@ -16,7 +16,7 @@ LIBFT_DIR = libft
 MINILIB = $(MINILIB_DIR)/libmlx_Linux.a
 LIBFT = $(LIBFT_DIR)/libft.a
 
-HEADERS = include/so_long.h $(MINILIB_DIR)/mlx.h $(MINILIB_DIR)/mlx_int.h $(LIBFT_DIR)/libft.h
+HEADERS = include/so_long.h $(MINILIB_DIR)/mlx.h $(LIBFT_DIR)/libft.h
 
 OBJS_DIR = objects
 OBJS = $(addprefix $(OBJS_DIR)/, $(notdir $(SRC:.c=.o)))

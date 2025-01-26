@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 19:27:24 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/26 16:23:13 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/26 17:19:38 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,19 @@
 int	init_window(t_data *data)
 {
 	t_map	map;
+	int window_width;
+	int window_height;
 
 	load_map("map/map.ber", &map);
 	data->map = map;
 	data->mlx = mlx_init();
-	data->win = mlx_new_window(data->mlx, data->map.width * 64,
-			data->map.height * 64, "PURE IT");
+	window_width = data->map.width * 64;
+    window_height = data->map.height * 64;
+    if (window_width > 1920)
+        window_width = 1920;
+    if (window_height > 1080)
+        window_height = 1080;
+    data->win = mlx_new_window(data->mlx, window_width, window_height, "PURE IT");
 	init_ressources(data);
 	load_background(data);
 	render_map(data);
