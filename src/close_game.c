@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 10:40:11 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/26 14:59:40 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/26 16:04:03 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,10 @@ int	close_game(t_data *data)
 
 int	free_game(t_data *data)
 {
-	mlx_destroy_display(data->mlx);
+	if (data->mlx)
+		mlx_destroy_display(data->mlx);
 	free_map(&data->map);
-	free(data->mlx);
+	if (data->mlx)
+		free(data->mlx);
 	return (0);
 }
