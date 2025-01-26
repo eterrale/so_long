@@ -6,11 +6,37 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 20:20:06 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/26 15:05:39 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/26 16:41:20 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+void	put_tile_to_window(t_data *data, int x, int y, int tile)
+{
+	mlx_put_image_to_window(data->mlx, data->win, data->img[tile].addr, x, y);
+}
+
+static void	handle_tile(t_data *data, int x, int y, char tile)
+{
+	if (tile == '1')
+		put_tile_to_window(data, x, y, 1);
+	else if (tile == 'P')
+	{
+		data->player.pos_x = x;
+		data->player.pos_y = y;
+		data->player.grid_x = x / 64;
+		data->player.grid_y = y / 64;
+		put_tile_to_window(data, x, y, 3);
+	}
+	else if (tile == 'C')
+	{
+		put_tile_to_window(data, x, y, 4);
+		data->map.number_c += 1;
+	}
+	else if (tile == 'E')
+		put_tile_to_window(data, x, y, 8);
+}
 
 int	render_map(t_data *data)
 {
@@ -30,29 +56,8 @@ int	render_map(t_data *data)
 		j = 0;
 		while (data->map.grid[i][j] != '\0')
 		{
-			mlx_put_image_to_window(data->mlx, data->win,
-				data->img[2].addr, x, y);
-			if (data->map.grid[i][j] == '1')
-				mlx_put_image_to_window(data->mlx, data->win,
-					data->img[1].addr, x, y);
-			if (data->map.grid[i][j] == 'P')
-			{
-				data->player.posX = x;
-				data->player.posY = y;
-				data->player.gridX = j;
-				data->player.gridY = i;
-				mlx_put_image_to_window(data->mlx, data->win,
-					data->img[3].addr, x, y);
-			}
-			if (data->map.grid[i][j] == 'C')
-			{
-				mlx_put_image_to_window(data->mlx, data->win,
-					data->img[4].addr, x, y);
-				data->map.number_c += 1;
-			}
-			if (data->map.grid[i][j] == 'E')
-				mlx_put_image_to_window(data->mlx, data->win,
-					data->img[8].addr, x, y);
+			put_tile_to_window(data, x, y, 2);
+			handle_tile(data, x, y, data->map.grid[i][j]);
 			x += 64;
 			j++;
 		}

@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 16:00:01 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/26 14:59:09 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/26 16:42:31 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,80 +14,68 @@
 
 int	p_moveforward(t_data *data, t_player *player, t_map *map)
 {
-	mlx_put_image_to_window(data->mlx, data->win, data->img[5].addr,
-		player->posX, player->posY);
-	if (map->grid[player->gridY - 1][player->gridX] != '1')
+	put_tile_to_window(data, player->pos_x, player->pos_y, 5);
+	if (map->grid[player->grid_y - 1][player->grid_x] != '1')
 	{
-		mlx_put_image_to_window(data->mlx, data->win, data->img[2].addr,
-			player->posX, player->posY);
-		player->posY -= 64;
-		mlx_put_image_to_window(data->mlx, data->win, data->img[5].addr,
-			player->posX, player->posY);
-		if (map->grid[player->gridY - 1][player->gridX] == 'C')
+		put_tile_to_window(data, player->pos_x, player->pos_y, 2);
+		player->pos_y -= 64;
+		put_tile_to_window(data, player->pos_x, player->pos_y, 5);
+		if (map->grid[player->grid_y - 1][player->grid_x] == 'C')
 			map->number_c -= 1;
-		map->grid[player->gridY][player->gridX] = '0';
-		map->grid[player->gridY - 1][player->gridX] = 'P';
-		player->gridY -= 1;
+		map->grid[player->grid_y][player->grid_x] = '0';
+		map->grid[player->grid_y - 1][player->grid_x] = 'P';
+		player->grid_y -= 1;
 	}
 	return (0);
 }
 
 int	p_movebackward(t_data *data, t_player *player, t_map *map)
 {
-	mlx_put_image_to_window(data->mlx, data->win, data->img[3].addr,
-		player->posX, player->posY);
-	if (map->grid[player->gridY + 1][player->gridX] != '1')
+	put_tile_to_window(data, player->pos_x, player->pos_y, 3);
+	if (map->grid[player->grid_y + 1][player->grid_x] != '1')
 	{
-		mlx_put_image_to_window(data->mlx, data->win, data->img[2].addr,
-			player->posX, player->posY);
-		player->posY += 64;
-		mlx_put_image_to_window(data->mlx, data->win, data->img[3].addr,
-			player->posX, player->posY);
-		if (map->grid[player->gridY + 1][player->gridX] == 'C')
+		put_tile_to_window(data, player->pos_x, player->pos_y, 2);
+		player->pos_y += 64;
+		put_tile_to_window(data, player->pos_x, player->pos_y, 3);
+		if (map->grid[player->grid_y + 1][player->grid_x] == 'C')
 			map->number_c -= 1;
-		map->grid[player->gridY][player->gridX] = '0';
-		map->grid[player->gridY + 1][player->gridX] = 'P';
-		player->gridY += 1;
+		map->grid[player->grid_y][player->grid_x] = '0';
+		map->grid[player->grid_y + 1][player->grid_x] = 'P';
+		player->grid_y += 1;
 	}
 	return (0);
 }
 
 int	p_moveleft(t_data *data, t_player *player, t_map *map)
 {
-	mlx_put_image_to_window(data->mlx, data->win, data->img[6].addr,
-		player->posX, player->posY);
-	if (map->grid[player->gridY][player->gridX - 1] != '1')
+	put_tile_to_window(data, player->pos_x, player->pos_y, 6);
+	if (map->grid[player->grid_y][player->grid_x - 1] != '1')
 	{
-		mlx_put_image_to_window(data->mlx, data->win, data->img[2].addr,
-			player->posX, player->posY);
-		player->posX -= 64;
-		mlx_put_image_to_window(data->mlx, data->win, data->img[6].addr,
-			player->posX, player->posY);
-		if (map->grid[player->gridY][player->gridX - 1] == 'C')
+		put_tile_to_window(data, player->pos_x, player->pos_y, 2);
+		player->pos_x -= 64;
+		put_tile_to_window(data, player->pos_x, player->pos_y, 6);
+		if (map->grid[player->grid_y][player->grid_x - 1] == 'C')
 			map->number_c -= 1;
-		map->grid[player->gridY][player->gridX] = '0';
-		map->grid[player->gridY][player->gridX - 1] = 'P';
-		player->gridX -= 1;
+		map->grid[player->grid_y][player->grid_x] = '0';
+		map->grid[player->grid_y][player->grid_x - 1] = 'P';
+		player->grid_x -= 1;
 	}
 	return (0);
 }
 
 int	p_moveright(t_data *data, t_player *player, t_map *map)
 {
-	mlx_put_image_to_window(data->mlx, data->win, data->img[7].addr,
-		player->posX, player->posY);
-	if (map->grid[player->gridY][player->gridX + 1] != '1')
+	put_tile_to_window(data, player->pos_x, player->pos_y, 7);
+	if (map->grid[player->grid_y][player->grid_x + 1] != '1')
 	{
-		mlx_put_image_to_window(data->mlx, data->win, data->img[2].addr,
-			player->posX, player->posY);
-		player->posX += 64;
-		mlx_put_image_to_window(data->mlx, data->win, data->img[7].addr,
-			player->posX, player->posY);
-		if (map->grid[player->gridY][player->gridX + 1] == 'C')
+		put_tile_to_window(data, player->pos_x, player->pos_y, 2);
+		player->pos_x += 64;
+		put_tile_to_window(data, player->pos_x, player->pos_y, 7);
+		if (map->grid[player->grid_y][player->grid_x + 1] == 'C')
 			map->number_c -= 1;
-		map->grid[player->gridY][player->gridX] = '0';
-		map->grid[player->gridY][player->gridX + 1] = 'P';
-		player->gridX += 1;
+		map->grid[player->grid_y][player->grid_x] = '0';
+		map->grid[player->grid_y][player->grid_x + 1] = 'P';
+		player->grid_x += 1;
 	}
 	return (0);
 }

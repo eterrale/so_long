@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:25:38 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/26 15:14:54 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/26 16:40:41 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@
 
 typedef struct s_player
 {
-	int	posX;
-	int	posY;
-	int gridX;
-	int gridY;	
+	int	pos_x;
+	int	pos_y;
+	int	grid_x;
+	int	grid_y;	
 }	t_player;
 
 typedef struct s_image_data
@@ -61,6 +61,8 @@ void	print_error(t_data *data);
 
 char	*get_next_line(int fd);
 
+void	put_tile_to_window(t_data *data, int x, int y, int tile);
+
 // --------------------------------------- FREE FUNCTIONS
 
 void	free_map(t_map *map);
@@ -81,7 +83,7 @@ int		load_background(t_data *data);
 
 int		init_window(t_data *data);
 
-int 	render_map(t_data *data);
+int		render_map(t_data *data);
 
 // --------------------------------------- PLAYER MOVE
 
