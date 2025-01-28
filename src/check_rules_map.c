@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 14:26:42 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/28 14:32:46 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/28 20:26:07 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ static int	is_rectangular(char **grid, int height)
 void	check_rules_map(t_map *map)
 {
 	int	x;
-	int y;
+	int	y;
 
 	if (map->height == 0 || map->width == 0)
-		print_error();
+		print_error("Error Map : Wrong format");
 	if (!is_rectangular(map->grid, map->height))
-		print_error();
+		print_error("Error Map : Wrong format");
 	y = 0;
 	while (map->grid[y])
 	{
@@ -48,10 +48,9 @@ void	check_rules_map(t_map *map)
 			if (map->grid[y][x] != '1' && map->grid[y][x] != '0' &&
 					map->grid[y][x] != 'P' && map->grid[y][x] != 'E'
 						&& map->grid[y][x] != 'C')
-				print_error();
+				print_error("Error Map : Wrong format");
 			x++;
 		}
 		y++;
 	}
-	
 }

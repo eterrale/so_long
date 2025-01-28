@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 10:40:11 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/26 19:38:24 by ekeisler         ###   ########.fr       */
+/*   Created: 2025/01/28 20:26:14 by ekeisler          #+#    #+#             */
+/*   Updated: 2025/01/28 20:26:34 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,36 +19,29 @@ static void	destroy_and_free(t_data *data)
 	i = 0;
 	while (i < NUM_IMG)
 	{
-		if (data->img[i].addr != NULL)
-		{
+		if (data->img[i].addr)
 			mlx_destroy_image(data->mlx, data->img[i].addr);
-			data->img[i].addr = NULL;
-		}
 		i++;
 	}
-	if (data->win != NULL)
-	{
+	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
-		data->win = NULL;
-	}
-	if (data->mlx != NULL)
-		mlx_loop_end(data->mlx);
-	ft_putstr_fd("free all variables..\n", 1);
-}
-
-int	close_game(t_data *data)
-{
-	destroy_and_free(data);
-	ft_putstr_fd("closing game...\n", 1);
-	return (0);
-}
-
-int	free_game(t_data *data)
-{
 	if (data->mlx)
 		mlx_destroy_display(data->mlx);
 	free_map(&data->map);
 	if (data->mlx)
 		free(data->mlx);
+	ft_putstr_fd("\033[0;35m", 1);
+	ft_putstr_fd("free all variables..\n", 1);
+	ft_putstr_fd("\033[0m", 1);
+}
+
+int	close_game(t_data *data)
+{
+	if (data->mlx)
+		mlx_loop_end(data->mlx);
+	destroy_and_free(data);
+	ft_putstr_fd("\033[0;32m", 1);
+	ft_putstr_fd("closing game...\n", 1);
+	exit(0);
 	return (0);
 }

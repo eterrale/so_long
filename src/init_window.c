@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 19:27:24 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/28 14:17:28 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/28 20:29:30 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,23 @@
 
 int	init_window(t_data *data, char *map_path)
 {
-	t_map	map;
-	int window_width;
-	int window_height;
+	int	window_width;
+	int	window_height;
 
+	ft_bzero(data, sizeof(t_data));
 	check_map_path(map_path);
-	load_map(map_path, &map);
-	data->map = map;
+	load_map(map_path, &data->map);
 	data->mlx = mlx_init();
-	window_width = data->map.width * 64;
-    window_height = data->map.height * 64;
-    if (window_width > 3840 || window_height > 2160)
-        print_error();
-    data->win = mlx_new_window(data->mlx, window_width, window_height, "PURE IT");
 	init_ressources(data);
-	load_background(data);
+	window_width = data->map.width * 64;
+	window_height = data->map.height * 64;
+	if (window_width > 3840 || window_height > 2160)
+		print_error_close_game(data, "Map Error : oversized map");
+	data->win = mlx_new_window(data->mlx, window_width,
+			window_height, "PURE IT");
 	render_map(data);
+	ft_putstr_fd("\033[0;36m", 1);
 	ft_putstr_fd("start game...\n", 1);
+	ft_putstr_fd("\033[0;32m", 1);
 	return (0);
 }

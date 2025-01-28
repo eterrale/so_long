@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:51:15 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/28 14:33:21 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/28 20:29:46 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ int	load_map(const char *filename, t_map *map)
 	char	*buf;
 	char	*line;
 	char	*temp;
-	
+
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		print_error();
+		print_error("File Error : reading map file...");
 	buf = ft_strdup("");
 	line = get_next_line(fd);
 	while (line)

@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:37:33 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/28 13:44:30 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/28 20:30:02 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int	key_hook(int key, t_data *data)
 int	main(int argc, char **argv)
 {
 	t_data	data;
-	
-	if(argc > 2 || !argv[1])
-		print_error();
+
+	if (argc > 2 || !argv[1])
+		print_error("Input Error : (wrong path, too many arguments...)");
 	init_window(&data, argv[1]);
 	if (data.mlx)
 	{
@@ -53,6 +53,5 @@ int	main(int argc, char **argv)
 		mlx_key_hook(data.win, key_hook, &data);
 		mlx_loop(data.mlx);
 	}
-	free_game(&data);
 	return (0);
 }

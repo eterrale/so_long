@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:25:38 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/28 14:31:48 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/28 20:30:32 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ typedef struct s_data
 
 // --------------------------------------- UTILS FUNCTIONS
 
-void	print_error();
+void	print_error(char *error_id);
 
-void	print_error_close_game(t_data *data);
+void	print_error_close_game(t_data *data, char *error_id);
 
 char	*get_next_line(int fd);
 
@@ -82,8 +82,6 @@ int		init_ressources(t_data *data);
 void	check_rules_map(t_map *map);
 
 int		load_map(const char *filename, t_map *map);
-
-int		load_background(t_data *data);
 
 int		init_window(t_data *data, char *map_path);
 
