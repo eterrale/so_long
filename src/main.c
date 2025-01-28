@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:37:33 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/26 17:28:40 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/28 13:44:30 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,13 @@ int	key_hook(int key, t_data *data)
 	return (0);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_data	data;
-
-	init_window(&data);
+	
+	if(argc > 2 || !argv[1])
+		print_error();
+	init_window(&data, argv[1]);
 	if (data.mlx)
 	{
 		mlx_hook(data.win, 17, 0, close_game, &data);

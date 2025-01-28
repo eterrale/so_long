@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 14:26:42 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/26 16:22:51 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/28 13:45:25 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ void	check_rules_map(t_data *data)
 
 	i = 0;
 	if (data->map.height == 0 || data->map.width == 0)
-		print_error(data);
+		print_error_close_game(data);
 	if (!is_rectangular(data->map.grid, data->map.height))
-		print_error(data);
+		print_error_close_game(data);
 	while (i < data->map.height)
 	{
 		if ((data->map.grid[i][0] != '1')
 			|| (data->map.grid[i][data->map.width - 1] != '1'))
-			print_error(data);
+			print_error_close_game(data);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 20:26:51 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/26 16:20:46 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/28 13:45:06 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	init_ressources(t_data *data)
 		data->img[i].addr = mlx_xpm_file_to_image(data->mlx, (char *)paths[i],
 				&data->img[i].width, &data->img[i].height);
 		if (!data->img[i].addr)
-			print_error(data);
+			print_error_close_game(data);
 		i++;
 	}
 	return (0);
