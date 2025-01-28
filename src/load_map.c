@@ -6,14 +6,14 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:51:15 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/28 13:46:16 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:33:21 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 #include <fcntl.h>
 
-static void	size_map(t_map *map)
+static void	check_size_and_rules_map(t_map *map)
 {
 	int	i;
 	int	j;
@@ -28,6 +28,7 @@ static void	size_map(t_map *map)
 	}
 	map->height = i;
 	map->width = j;
+	check_rules_map(map);
 }
 
 int	load_map(const char *filename, t_map *map)
@@ -36,7 +37,7 @@ int	load_map(const char *filename, t_map *map)
 	char	*buf;
 	char	*line;
 	char	*temp;
-
+	
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		print_error();
@@ -55,6 +56,6 @@ int	load_map(const char *filename, t_map *map)
 	close(fd);
 	map->grid = ft_split(buf, '\n');
 	free(buf);
-	size_map(map);
+	check_size_and_rules_map(map);
 	return (0);
 }

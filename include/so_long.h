@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:25:38 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/28 13:44:48 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:31:48 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,11 @@ int		free_game(t_data *data);
 
 // --------------------------------------- MAP FUNCTIONS
 
+void	check_map_path(const char *filename);
+
 int		init_ressources(t_data *data);
 
-void	check_rules_map(t_data *data);
+void	check_rules_map(t_map *map);
 
 int		load_map(const char *filename, t_map *map);
 

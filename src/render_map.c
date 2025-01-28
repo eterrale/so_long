@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 20:20:06 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/26 16:41:20 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:28:34 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int	render_map(t_data *data)
 	int	i;
 	int	j;
 
-	check_rules_map(data);
 	y = 0;
 	i = 0;
 	data->map.number_c = 0;

@@ -7,7 +7,7 @@ SRC_DIR = src/
 MAIN_SRC = $(SRC_DIR)main.c $(SRC_DIR)close_game.c $(SRC_DIR)get_next_line.c $(SRC_DIR)load_map.c \
 		   $(SRC_DIR)free_map.c $(SRC_DIR)init_window.c $(SRC_DIR)load_background.c \
 		   $(SRC_DIR)init_ressources.c $(SRC_DIR)render_map.c $(SRC_DIR)player_move.c \
-		   $(SRC_DIR)print_error.c $(SRC_DIR)check_rules_map.c
+		   $(SRC_DIR)print_error.c $(SRC_DIR)check_rules_map.c $(SRC_DIR)check_map_path.c
 
 SRC = $(MAIN_SRC)
 
