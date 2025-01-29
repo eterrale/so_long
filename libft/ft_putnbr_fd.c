@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 17:37:41 by ekeisler          #+#    #+#             */
-/*   Updated: 2024/11/21 14:33:34 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/29 09:51:20 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	*rslt;
 	size_t	ncpy;
 
-	rslt = NULL;
 	ncpy = n;
 	if (n < 0)
 	{
