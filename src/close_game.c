@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 20:26:14 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/28 20:26:34 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/29 18:13:56 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	close_game(t_data *data)
 		mlx_loop_end(data->mlx);
 	destroy_and_free(data);
 	ft_putstr_fd("\033[0;32m", 1);
-	ft_putstr_fd("closing game...\n", 1);
+	ft_putstr_fd("closing game...\n\033[0m", 1);
 	exit(0);
 	return (0);
 }

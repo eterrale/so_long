@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 20:26:51 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/29 10:25:36 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/29 20:08:37 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	init_ressources(t_data *data)
 	put_xpm_addr(data, 6, "ressources/character/Bunny2.xpm");
 	put_xpm_addr(data, 7, "ressources/character/Bunny3.xpm");
 	put_xpm_addr(data, 8, "ressources/env/exit.xpm");
+	put_xpm_addr(data, 9, "ressources/env/exit2.xpm");
 	check_image_addr(data);
 	return (0);
 }

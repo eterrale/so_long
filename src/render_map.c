@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 20:20:06 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/29 14:15:43 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/29 20:25:14 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,11 @@ static void	handle_tile(t_data *data, int x, int y, char tile)
 	else if (tile == 'C')
 		put_tile_to_window(data, x, y, 4);
 	else if (tile == 'E')
-		put_tile_to_window(data, x, y, 8);
+	{
+		put_tile_to_window(data, x, y, 9);
+		data->map.exit_x = x;
+		data->map.exit_y = y;
+	}
 }
 
 int	render_map(t_data *data)
@@ -44,7 +48,6 @@ int	render_map(t_data *data)
 
 	y = 0;
 	i = 0;
-	data->map.number_c = 0;
 	data->count_move = 0;
 	while (data->map.grid[i])
 	{

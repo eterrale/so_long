@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 16:00:01 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/26 17:31:27 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/29 18:23:14 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ int	p_moveforward(t_data *data, t_player *player, t_map *map)
 		map->grid[player->grid_y][player->grid_x] = '0';
 		map->grid[player->grid_y - 1][player->grid_x] = 'P';
 		player->grid_y -= 1;
+		data->count_move += 1;
+		print_count_move(data);
+		return (1);
 	}
 	return (0);
 }
@@ -42,6 +45,9 @@ int	p_movebackward(t_data *data, t_player *player, t_map *map)
 		map->grid[player->grid_y][player->grid_x] = '0';
 		map->grid[player->grid_y + 1][player->grid_x] = 'P';
 		player->grid_y += 1;
+		data->count_move += 1;
+		print_count_move(data);
+		return (1);
 	}
 	return (0);
 }
@@ -59,6 +65,9 @@ int	p_moveleft(t_data *data, t_player *player, t_map *map)
 		map->grid[player->grid_y][player->grid_x] = '0';
 		map->grid[player->grid_y][player->grid_x - 1] = 'P';
 		player->grid_x -= 1;
+		data->count_move += 1;
+		print_count_move(data);
+		return (1);
 	}
 	return (0);
 }
@@ -76,6 +85,9 @@ int	p_moveright(t_data *data, t_player *player, t_map *map)
 		map->grid[player->grid_y][player->grid_x] = '0';
 		map->grid[player->grid_y][player->grid_x + 1] = 'P';
 		player->grid_x += 1;
+		data->count_move += 1;
+		print_count_move(data);
+		return (1);
 	}
 	return (0);
 }

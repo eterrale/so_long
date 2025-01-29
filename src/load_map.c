@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:51:15 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/29 15:29:38 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/29 20:23:09 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	check_size_and_rules_map(t_data *data)
 	}
 	data->map.height = i;
 	data->map.width = j;
-	count_collectible(&data->map);
+	count_collectible(&data->map, &data->map.number_c);
 	check_rules_map(data);
 	check_exit_reachable(data);
 }
@@ -62,7 +62,7 @@ int	load_map(const char *filename, t_map *map, t_data *data)
 	return (0);
 }
 
-int	count_collectible(t_map *map)
+int	count_collectible(t_map *map, int *count)
 {
 	int	x;
 	int	y;
@@ -74,7 +74,7 @@ int	count_collectible(t_map *map)
 		while (map->grid[y][x])
 		{
 			if (map->grid[y][x] == 'C')
-				map->number_c++;
+				*count += 1;
 			x++;
 		}
 		y++;

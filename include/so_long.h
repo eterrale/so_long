@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:25:38 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/29 14:32:14 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/29 20:22:06 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "../libft/libft.h"
 # include <unistd.h>
 
-# define NUM_IMG 9
+# define NUM_IMG 10
 
 // --------------------------------------- STRUCT 
 
@@ -26,7 +26,7 @@ typedef struct s_player
 	int	pos_x;
 	int	pos_y;
 	int	grid_x;
-	int	grid_y;	
+	int	grid_y;
 }	t_player;
 
 typedef struct s_image_data
@@ -41,6 +41,8 @@ typedef struct s_map
 	char	**grid;
 	int		width;
 	int		height;
+	int		exit_x;
+	int		exit_y;
 	int		number_c;
 }		t_map;
 
@@ -59,6 +61,8 @@ typedef struct s_data
 void	print_error(char *error_id);
 
 void	print_error_close_game(t_data *data, char *error_id);
+
+void	print_count_move(t_data *data);
 
 char	*get_next_line(int fd);
 
@@ -86,7 +90,7 @@ void	check_exit_reachable(t_data *data);
 
 int		init_ressources(t_data *data);
 
-int		count_collectible(t_map *map);
+int		count_collectible(t_map *map, int *count);
 
 void	check_rules_map(t_data *data);
 
@@ -105,5 +109,7 @@ int		p_movebackward(t_data *data, t_player *player, t_map *map);
 int		p_moveleft(t_data *data, t_player *player, t_map *map);
 
 int		p_moveright(t_data *data, t_player *player, t_map *map);
+
+int		event_hook(int key, t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 14:26:42 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/29 15:37:34 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:40:06 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ static int	surrounded_by_wall(char **grid, int width, int height)
 		{
 			if ((y == 0 || y == height - 1) && grid[y][x] != '1')
 				return (0);
-			if ((y != 0 && y != height - 1) && (x == 0 || x == width - 1) && grid[y][x] != '1')
+			if ((y != 0 && y != height - 1) && (x == 0 || x == width - 1)
+				&& grid[y][x] != '1')
 				return (0);
 			x++;
 		}
@@ -55,8 +56,11 @@ static int	surrounded_by_wall(char **grid, int width, int height)
 static int	map_ressources(char **grid, int width, int height, t_data *data)
 {
 	int	x, y;
-	int	exit = 0, player = 0;
+	int	exit;
+	int player;
 
+	exit = 0;
+	player = 0;
 	y = -1;
 	while (++y < height)
 	{
