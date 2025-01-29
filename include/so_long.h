@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:25:38 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/28 20:30:32 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:32:14 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "../minilibx/mlx.h"
 # include "../libft/libft.h"
-# include <math.h>
 # include <unistd.h>
 
 # define NUM_IMG 9
@@ -71,17 +70,27 @@ void	free_map(t_map *map);
 
 int		close_game(t_data *data);
 
-int		free_game(t_data *data);
-
 // --------------------------------------- MAP FUNCTIONS
 
-void	check_map_path(const char *filename);
+void	free_visited(int **visited, int height);
+
+int		**allocate_visited(t_map *map);
+
+void	find_start(t_map *map, int *x, int *y);
+
+void	check_map_ext(const char *filename);
+
+int		check_path(t_map *map);
+
+void	check_exit_reachable(t_data *data);
 
 int		init_ressources(t_data *data);
 
-void	check_rules_map(t_map *map);
+int		count_collectible(t_map *map);
 
-int		load_map(const char *filename, t_map *map);
+void	check_rules_map(t_data *data);
+
+int		load_map(const char *filename, t_map *map, t_data *data);
 
 int		init_window(t_data *data, char *map_path);
 

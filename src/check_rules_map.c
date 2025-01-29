@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 14:26:42 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/28 20:26:07 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:29:44 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,24 @@ static int	is_rectangular(char **grid, int height)
 	return (1);
 }
 
-void	check_rules_map(t_map *map)
+void	check_rules_map(t_data *data)
 {
 	int	x;
 	int	y;
 
-	if (map->height == 0 || map->width == 0)
-		print_error("Error Map : Wrong format");
-	if (!is_rectangular(map->grid, map->height))
-		print_error("Error Map : Wrong format");
+	if (data->map.height == 0 || data->map.width == 0)
+		print_error_close_game(data, "Error Map : Wrong format");
+	if (!is_rectangular(data->map.grid, data->map.height))
+		print_error_close_game(data, "Error Map : Wrong format");
 	y = 0;
-	while (map->grid[y])
+	while (data->map.grid[y])
 	{
 		x = 0;
-		while (map->grid[y][x])
+		while (data->map.grid[y][x])
 		{
-			if (map->grid[y][x] != '1' && map->grid[y][x] != '0' &&
-					map->grid[y][x] != 'P' && map->grid[y][x] != 'E'
-						&& map->grid[y][x] != 'C')
+			if (data->map.grid[y][x] != '1' && data->map.grid[y][x] != '0' &&
+					data->map.grid[y][x] != 'P' && data->map.grid[y][x] != 'E'
+						&& data->map.grid[y][x] != 'C')
 				print_error("Error Map : Wrong format");
 			x++;
 		}

@@ -6,13 +6,13 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 14:14:33 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/28 20:25:53 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/29 10:38:25 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	check_map_path(const char *filename)
+void	check_map_ext(const char *filename)
 {
 	int	size;
 

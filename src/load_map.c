@@ -6,32 +6,32 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:51:15 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/28 20:29:46 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:31:52 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 #include <fcntl.h>
 
-static void	check_size_and_rules_map(t_map *map)
+static void	check_size_and_rules_map(t_data *data)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (map->grid[i])
+	while (data->map.grid[i])
 	{
 		j = 0;
-		while (map->grid[i][j])
+		while (data->map.grid[i][j])
 			j++;
 		i++;
 	}
-	map->height = i;
-	map->width = j;
-	check_rules_map(map);
+	data->map.height = i;
+	data->map.width = j;
+	check_rules_map(data);
 }
 
-int	load_map(const char *filename, t_map *map)
+int	load_map(const char *filename, t_map *map, t_data *data)
 {
 	int		fd;
 	char	*buf;
@@ -56,6 +56,26 @@ int	load_map(const char *filename, t_map *map)
 	close(fd);
 	map->grid = ft_split(buf, '\n');
 	free(buf);
-	check_size_and_rules_map(map);
+	check_size_and_rules_map(data);
+	return (0);
+}
+
+int	count_collectible(t_map *map)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (map->grid[y])
+	{
+		x = 0;
+		while (map->grid[y][x])
+		{
+			if (map->grid[y][x] == 'C')
+				map->number_c++;
+			x++;
+		}
+		y++;
+	}
 	return (0);
 }

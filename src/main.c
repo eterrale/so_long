@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:37:33 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/28 20:30:02 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:00:22 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ int	key_hook(int key, t_data *data)
 	}
 	if (key == 0xFF1B)
 		close_game(data);
-	return (0);
+	ft_putstr_fd("\033[0;36mtotal moves : \033[1;33m", 1);
+	ft_putstr_fd(ft_itoa(data->count_move), 1);
+	return (ft_putstr_fd("\n", 1), 0);
 }
 
 int	main(int argc, char **argv)

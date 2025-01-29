@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 20:20:06 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/28 14:28:34 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:15:43 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ static void	handle_tile(t_data *data, int x, int y, char tile)
 		put_tile_to_window(data, x, y, 3);
 	}
 	else if (tile == 'C')
-	{
 		put_tile_to_window(data, x, y, 4);
-		data->map.number_c += 1;
-	}
 	else if (tile == 'E')
 		put_tile_to_window(data, x, y, 8);
 }
