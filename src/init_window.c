@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 19:27:24 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/29 14:32:02 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:29:09 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ int	init_window(t_data *data, char *map_path)
 	ft_bzero(data, sizeof(t_data));
 	check_map_ext(map_path);
 	load_map(map_path, &data->map, data);
-	count_collectible(&data->map);
-	check_exit_reachable(data);
 	data->mlx = mlx_init();
 	init_ressources(data);
 	window_width = data->map.width * 64;
