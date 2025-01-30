@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:25:38 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/30 15:39:15 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:45:22 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ int		close_game(t_data *data);
 // --------------------------------------- MAP FUNCTIONS
 
 void	check_map_ext(const char *filename);
+
+void	apply_greyscale_filter(t_image_data *img);
 
 int		check_path(t_map *map);
 

@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 20:26:51 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/30 15:41:07 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/30 17:09:12 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	init_ressources(t_data *data)
 	put_xpm_addr(data, 1, "ressources/env/Tree.xpm");
 	put_xpm_addr(data, 2, "ressources/env/Floor.xpm");
 	put_xpm_addr(data, 3, "ressources/character/Bunny0.xpm");
-	put_xpm_addr(data, 4, "ressources/cosm/garbage.xpm");
+	put_xpm_addr(data, 4, "ressources/col/carrot.xpm");
 	put_xpm_addr(data, 5, "ressources/character/Bunny1.xpm");
 	put_xpm_addr(data, 6, "ressources/character/Bunny2.xpm");
 	put_xpm_addr(data, 7, "ressources/character/Bunny3.xpm");

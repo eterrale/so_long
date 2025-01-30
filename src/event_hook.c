@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 17:49:07 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/30 14:52:21 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/30 17:42:24 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	move(int key, t_data *data);
 static int	player_is_on_exit(t_data *data);
-static void	player_move_on_exit(t_data *d, t_player p, int key);
+static void	player_move_on_exit(t_data *d, int key);
 
 // 
 // This function hold all the event we hook when a key is pressed
@@ -75,19 +75,19 @@ static int	player_is_on_exit(t_data *data)
 // This function is to hold when the player
 // is moving on the exit.
 // 
-static void	player_move_on_exit(t_data *d, t_player p, int key)
+static void	player_move_on_exit(t_data *d, int key)
 {
 	static int	exit_rendered = 0;
 
 	if (player_is_on_exit(d))
 	{
-		if (key == 119 && d->map.grid[p.grid_y - 1][p.grid_x] == '1')
+		if (key == 119)
 			put_tile_to_window(d, d->player.pos_x, d->player.pos_y, 11);
-		if (key == 115 && d->map.grid[p.grid_y + 1][p.grid_x] == '1')
+		if (key == 115)
 			put_tile_to_window(d, d->player.pos_x, d->player.pos_y, 10);
-		if (key == 97 && d->map.grid[p.grid_y][p.grid_x - 1] == '1')
+		if (key == 97)
 			put_tile_to_window(d, d->player.pos_x, d->player.pos_y, 12);
-		if (key == 100 && d->map.grid[p.grid_y][p.grid_x + 1] == '1')
+		if (key == 100)
 			put_tile_to_window(d, d->player.pos_x, d->player.pos_y, 13);
 		exit_rendered = 0;
 	}
