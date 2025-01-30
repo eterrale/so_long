@@ -6,12 +6,32 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 20:26:14 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/29 18:13:56 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:15:37 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
+static void	destroy_and_free(t_data *data);
+
+// 
+// This function close the game
+// 
+int	close_game(t_data *data)
+{
+	if (data->mlx)
+		mlx_loop_end(data->mlx);
+	destroy_and_free(data);
+	ft_putstr_fd("\033[0;32m", 1);
+	ft_putstr_fd("closing game...\n\033[0m", 1);
+	exit(0);
+	return (0);
+}
+
+// 
+// This function destroy and free all
+// allocated elements of the program
+// 
 static void	destroy_and_free(t_data *data)
 {
 	int	i;
@@ -35,13 +55,19 @@ static void	destroy_and_free(t_data *data)
 	ft_putstr_fd("\033[0m", 1);
 }
 
-int	close_game(t_data *data)
+// 
+// This function free our map grid 
+// one by one
+// 
+void	free_map(t_map *map)
 {
-	if (data->mlx)
-		mlx_loop_end(data->mlx);
-	destroy_and_free(data);
-	ft_putstr_fd("\033[0;32m", 1);
-	ft_putstr_fd("closing game...\n\033[0m", 1);
-	exit(0);
-	return (0);
+	int	x;
+
+	x = 0;
+	while (map->grid[x])
+	{
+		free(map->grid[x]);
+		x++;
+	}
+	free(map->grid);
 }

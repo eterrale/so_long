@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:25:38 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/29 20:22:06 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:39:15 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "../libft/libft.h"
 # include <unistd.h>
 
-# define NUM_IMG 10
+# define NUM_IMG 14
 
 // --------------------------------------- STRUCT 
 
@@ -58,11 +58,11 @@ typedef struct s_data
 
 // --------------------------------------- UTILS FUNCTIONS
 
-void	print_error(char *error_id);
+void	print_error_exit(char *error_id);
 
 void	print_error_close_game(t_data *data, char *error_id);
 
-void	print_count_move(t_data *data);
+void	print_count_move(t_data *data, int i);
 
 char	*get_next_line(int fd);
 
@@ -76,27 +76,21 @@ int		close_game(t_data *data);
 
 // --------------------------------------- MAP FUNCTIONS
 
-void	free_visited(int **visited, int height);
-
-int		**allocate_visited(t_map *map);
-
-void	find_start(t_map *map, int *x, int *y);
-
 void	check_map_ext(const char *filename);
 
 int		check_path(t_map *map);
 
 void	check_exit_reachable(t_data *data);
 
+int		is_traversable(t_map *map, int **visited, int x, int y);
+
 int		init_ressources(t_data *data);
 
-int		count_collectible(t_map *map, int *count);
+void	check_rules_map(t_data *d);
 
-void	check_rules_map(t_data *data);
+int		parse_map(const char *filename, t_map *map, t_data *data);
 
-int		load_map(const char *filename, t_map *map, t_data *data);
-
-int		init_window(t_data *data, char *map_path);
+int		init_program(t_data *data, char *map_path);
 
 int		render_map(t_data *data);
 

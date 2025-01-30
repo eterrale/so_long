@@ -6,39 +6,17 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 20:20:06 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/29 20:25:14 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:47:15 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	put_tile_to_window(t_data *data, int x, int y, int tile)
-{
-	mlx_put_image_to_window(data->mlx, data->win, data->img[tile].addr, x, y);
-}
+static void	handle_tile(t_data *data, int x, int y, char tile);
 
-static void	handle_tile(t_data *data, int x, int y, char tile)
-{
-	if (tile == '1')
-		put_tile_to_window(data, x, y, 1);
-	else if (tile == 'P')
-	{
-		data->player.pos_x = x;
-		data->player.pos_y = y;
-		data->player.grid_x = x / 64;
-		data->player.grid_y = y / 64;
-		put_tile_to_window(data, x, y, 3);
-	}
-	else if (tile == 'C')
-		put_tile_to_window(data, x, y, 4);
-	else if (tile == 'E')
-	{
-		put_tile_to_window(data, x, y, 9);
-		data->map.exit_x = x;
-		data->map.exit_y = y;
-	}
-}
-
+// 
+// This function render our map visually.
+// 
 int	render_map(t_data *data)
 {
 	int	x;
@@ -64,4 +42,39 @@ int	render_map(t_data *data)
 		i++;
 	}
 	return (0);
+}
+
+// 
+// This function put on image on our
+// window in a given x y position..
+// 
+void	put_tile_to_window(t_data *data, int x, int y, int tile)
+{
+	mlx_put_image_to_window(data->mlx, data->win, data->img[tile].addr, x, y);
+}
+
+// 
+// This function handle each case image according
+// to his 'ID' on the map grid.
+// 
+static void	handle_tile(t_data *data, int x, int y, char tile)
+{
+	if (tile == '1')
+		put_tile_to_window(data, x, y, 1);
+	else if (tile == 'P')
+	{
+		data->player.pos_x = x;
+		data->player.pos_y = y;
+		data->player.grid_x = x / 64;
+		data->player.grid_y = y / 64;
+		put_tile_to_window(data, x, y, 3);
+	}
+	else if (tile == 'C')
+		put_tile_to_window(data, x, y, 4);
+	else if (tile == 'E')
+	{
+		put_tile_to_window(data, x, y, 9);
+		data->map.exit_x = x;
+		data->map.exit_y = y;
+	}
 }

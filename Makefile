@@ -7,13 +7,14 @@ SRC_DIR = src/
 LIBFT_DIR = libft/
 MINILIB_DIR = minilibx/
 
-MAIN_SRC = $(SRC_DIR)main.c $(SRC_DIR)close_game.c $(SRC_DIR)get_next_line.c $(SRC_DIR)load_map.c \
-		   $(SRC_DIR)free_map.c $(SRC_DIR)init_window.c $(SRC_DIR)init_ressources.c \
+MAIN_SRC = $(SRC_DIR)so_long.c $(SRC_DIR)close_game.c $(SRC_DIR)parse_map.c \
+		   $(SRC_DIR)init_program.c $(SRC_DIR)init_ressources.c \
 		   $(SRC_DIR)render_map.c $(SRC_DIR)player_move.c $(SRC_DIR)print_error.c \
 		   $(SRC_DIR)check_rules_map.c $(SRC_DIR)check_map_ext.c $(SRC_DIR)check_exit_reachable.c \
 		   $(SRC_DIR)check_exit_reachable_utils.c $(SRC_DIR)event_hook.c $(SRC_DIR)print_count_move.c \
 		   $(LIBFT_DIR)ft_bzero.c $(LIBFT_DIR)ft_strdup.c $(LIBFT_DIR)ft_strlen.c \
-		   $(LIBFT_DIR)ft_putstr_fd.c $(LIBFT_DIR)ft_split.c $(LIBFT_DIR)ft_strjoin.c
+		   $(LIBFT_DIR)ft_putstr_fd.c $(LIBFT_DIR)ft_split.c $(LIBFT_DIR)ft_strjoin.c \
+		   $(LIBFT_DIR)get_next_line.c 
 
 SRC = $(MAIN_SRC)
 

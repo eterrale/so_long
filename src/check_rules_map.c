@@ -6,12 +6,53 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 14:26:42 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/29 15:40:06 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:12:30 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
+static int	is_rectangular(char **grid, int height);
+static int	surrounded_by_wall(char **grid, int width, int height);
+static int	map_ressources(char **grid, int width, int height, t_data *data);
+
+// 
+// This function check our map respect all the rules
+// prescribed by the subject.
+// 
+void	check_rules_map(t_data *d)
+{
+	int	x;
+	int	y;
+
+	if (d->map.height == 0 || d->map.width == 0)
+		print_error_close_game(d, "Wrong format (ns)");
+	if (!is_rectangular(d->map.grid, d->map.height))
+		print_error_close_game(d, "Wrong format (nr)");
+	if (!surrounded_by_wall(d->map.grid, d->map.width, d->map.height))
+		print_error_close_game(d, "Wrong format (nsbw)");
+	if (!map_ressources(d->map.grid, d->map.width, d->map.height, d))
+		print_error_close_game(d, "Wrong format (duplicate player or exit)");
+	y = 0;
+	while (d->map.grid[y])
+	{
+		x = 0;
+		while (d->map.grid[y][x])
+		{
+			if (d->map.grid[y][x] != '1' && d->map.grid[y][x] != '0' &&
+					d->map.grid[y][x] != 'P' && d->map.grid[y][x] != 'E'
+						&& d->map.grid[y][x] != 'C')
+				print_error_close_game(d, "Wrong format");
+			x++;
+		}
+		y++;
+	}
+}
+
+// 
+// This function check is our map is
+// rectangular.
+// 
 static int	is_rectangular(char **grid, int height)
 {
 	int	line_lenght;
@@ -30,6 +71,10 @@ static int	is_rectangular(char **grid, int height)
 	return (1);
 }
 
+// 
+// This function check if our map is
+// surrounded by wall.
+// 
 static int	surrounded_by_wall(char **grid, int width, int height)
 {
 	int	x;
@@ -53,11 +98,16 @@ static int	surrounded_by_wall(char **grid, int width, int height)
 	return (1);
 }
 
+// 
+// This function check if the map miss mandatory
+// elements (ex: one and only one player, same for number of exit...)
+// 
 static int	map_ressources(char **grid, int width, int height, t_data *data)
 {
-	int	x, y;
+	int	x;
+	int	y;
 	int	exit;
-	int player;
+	int	player;
 
 	exit = 0;
 	player = 0;
@@ -72,39 +122,10 @@ static int	map_ressources(char **grid, int width, int height, t_data *data)
 		}
 	}
 	if (data->map.number_c < 1)
-		print_error_close_game(data, "Error Map : missing collectible");
+		print_error_close_game(data, "missing collectible");
 	if (player == 0)
-		print_error_close_game(data, "Error Map : missing player");
+		print_error_close_game(data, "missing player");
 	if (exit == 0)
-		print_error_close_game(data, "Error Map : missing exit");
+		print_error_close_game(data, "missing exit");
 	return (exit == 1 && player == 1);
-}
-
-void	check_rules_map(t_data *data)
-{
-	int	x;
-	int	y;
-
-	if (data->map.height == 0 || data->map.width == 0)
-		print_error_close_game(data, "Error Map : Wrong format (ns)");
-	if (!is_rectangular(data->map.grid, data->map.height))
-		print_error_close_game(data, "Error Map : Wrong format (nr)");
-	if (!surrounded_by_wall(data->map.grid, data->map.width, data->map.height))
-		print_error_close_game(data, "Error Map : Wrong format (nsbw)");
-	if (!map_ressources(data->map.grid, data->map.width, data->map.height, data))
-		print_error_close_game(data, "Error Map : Wrong format (duplicate player or exit)");
-	y = 0;
-	while (data->map.grid[y])
-	{
-		x = 0;
-		while (data->map.grid[y][x])
-		{
-			if (data->map.grid[y][x] != '1' && data->map.grid[y][x] != '0' &&
-					data->map.grid[y][x] != 'P' && data->map.grid[y][x] != 'E'
-						&& data->map.grid[y][x] != 'C')
-				print_error_close_game(data, "Error Map : Wrong format");
-			x++;
-		}
-		y++;
-	}
 }

@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_map.c                                         :+:      :+:    :+:   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:51:15 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/29 20:23:09 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:46:51 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 #include <fcntl.h>
 
-static void	check_size_and_rules_map(t_data *data)
-{
-	int	i;
-	int	j;
+static void	check_size_and_rules_map(t_data *data);
+static int	count_collectibles(t_map *map, int *count);
 
-	i = 0;
-	while (data->map.grid[i])
-	{
-		j = 0;
-		while (data->map.grid[i][j])
-			j++;
-		i++;
-	}
-	data->map.height = i;
-	data->map.width = j;
-	count_collectible(&data->map, &data->map.number_c);
-	check_rules_map(data);
-	check_exit_reachable(data);
-}
-
-int	load_map(const char *filename, t_map *map, t_data *data)
+// 
+// This function pars the map into a grid then
+// check all the rules.
+// 
+int	parse_map(const char *filename, t_map *map, t_data *data)
 {
 	int		fd;
 	char	*buf;
@@ -42,7 +29,7 @@ int	load_map(const char *filename, t_map *map, t_data *data)
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		print_error("File Error : reading map file...");
+		print_error_exit("cant read map file -> check map path...");
 	buf = ft_strdup("");
 	line = get_next_line(fd);
 	while (line)
@@ -62,7 +49,35 @@ int	load_map(const char *filename, t_map *map, t_data *data)
 	return (0);
 }
 
-int	count_collectible(t_map *map, int *count)
+// 
+// This function obtain the map.grid x and y
+// size then check all the rule for our map.
+//
+static void	check_size_and_rules_map(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (data->map.grid[i])
+	{
+		j = 0;
+		while (data->map.grid[i][j])
+			j++;
+		i++;
+	}
+	data->map.height = i;
+	data->map.width = j;
+	count_collectibles(&data->map, &data->map.number_c);
+	check_rules_map(data);
+	check_exit_reachable(data);
+}
+
+// 
+// This function count all the collectibles on
+// the map.
+// 
+static int	count_collectibles(t_map *map, int *count)
 {
 	int	x;
 	int	y;

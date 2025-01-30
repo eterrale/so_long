@@ -6,11 +6,12 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:32:34 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/26 15:06:24 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:19:26 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "libft.h"
+#include "unistd.h"
 
 static char	*ft_strdup_endl(const char *line)
 {
