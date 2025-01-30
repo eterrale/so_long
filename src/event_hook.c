@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 17:49:07 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/30 17:42:24 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/30 17:43:23 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,22 @@ static void	move(int key, t_data *data)
 	if (key == 119)
 	{
 		p_moveforward(data, &data->player, &data->map);
-		player_move_on_exit(data, data->player, key);
+		player_move_on_exit(data, key);
 	}
 	if (key == 115)
 	{
 		p_movebackward(data, &data->player, &data->map);
-		player_move_on_exit(data, data->player, key);
+		player_move_on_exit(data, key);
 	}
 	if (key == 97)
 	{
 		p_moveleft(data, &data->player, &data->map);
-		player_move_on_exit(data, data->player, key);
+		player_move_on_exit(data, key);
 	}
 	if (key == 100)
 	{
 		p_moveright(data, &data->player, &data->map);
-		player_move_on_exit(data, data->player, key);
+		player_move_on_exit(data, key);
 	}
 }
 
