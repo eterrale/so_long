@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 17:49:07 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/30 18:30:54 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/31 12:41:46 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	event_hook(int key, t_data *data)
 		move(key, data);
 	if (player_is_on_exit(data) && data->map.number_c == 0)
 		print_count_move(data, 1);
-	if (key == 0xFF1B)
+	if (key == ESC_KEY)
 		close_game(data);
 	return (0);
 }
@@ -37,38 +37,26 @@ int	event_hook(int key, t_data *data)
 // 
 static void	move(int key, t_data *data)
 {
-	if (key == 119)
+	if (key == W_KEY)
 	{
 		p_moveforward(data, &data->player, &data->map);
 		player_move_on_exit(data, key);
 	}
-	if (key == 115)
+	if (key == S_KEY)
 	{
 		p_movebackward(data, &data->player, &data->map);
 		player_move_on_exit(data, key);
 	}
-	if (key == 97)
+	if (key == A_KEY)
 	{
 		p_moveleft(data, &data->player, &data->map);
 		player_move_on_exit(data, key);
 	}
-	if (key == 100)
+	if (key == D_KEY)
 	{
 		p_moveright(data, &data->player, &data->map);
 		player_move_on_exit(data, key);
 	}
-}
-
-// 
-// This function purpose is to check if the player 
-// is on the exit
-// 
-static int	player_is_on_exit(t_data *data)
-{
-	if ((data->player.pos_x == data->map.exit_x)
-		&& (data->player.pos_y == data->map.exit_y))
-		return (1);
-	return (0);
 }
 
 // 
@@ -81,13 +69,13 @@ static void	player_move_on_exit(t_data *d, int key)
 
 	if (player_is_on_exit(d))
 	{
-		if (key == 119)
+		if (key == W_KEY)
 			put_tile_to_window(d, d->player.pos_x, d->player.pos_y, 11);
-		if (key == 115)
+		if (key == S_KEY)
 			put_tile_to_window(d, d->player.pos_x, d->player.pos_y, 10);
-		if (key == 97)
+		if (key == A_KEY)
 			put_tile_to_window(d, d->player.pos_x, d->player.pos_y, 12);
-		if (key == 100)
+		if (key == D_KEY)
 			put_tile_to_window(d, d->player.pos_x, d->player.pos_y, 13);
 		exit_rendered = 0;
 	}
@@ -102,4 +90,16 @@ static void	player_move_on_exit(t_data *d, int key)
 		put_tile_to_window(d, d->map.exit_x, d->map.exit_y, 8);
 		exit_rendered = 1;
 	}
+}
+
+// 
+// This function purpose is to check if the player 
+// is on the exit
+// 
+static int	player_is_on_exit(t_data *data)
+{
+	if ((data->player.pos_x == data->map.exit_x)
+		&& (data->player.pos_y == data->map.exit_y))
+		return (1);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:25:38 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/30 16:45:22 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/01/30 18:55:09 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 # include <unistd.h>
 
 # define NUM_IMG 14
+# define W_KEY 119
+# define S_KEY 115
+# define A_KEY 97
+# define D_KEY 100
+# define ESC_KEY 65307
 
 // --------------------------------------- STRUCT 
 
