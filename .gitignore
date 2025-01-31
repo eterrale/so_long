@@ -3,6 +3,8 @@
 
 # Directories
 objects
+minilib/test/mlx-test
+so_long
 
 # Object files
 *.o
