@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 10:54:46 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/30 18:31:08 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:07:51 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 void	check_exit_reachable(t_data *data)
 {
 	if (check_path(&data->map))
-		ft_putstr_fd("\033[0;32mGood map format !...\n", 1);
+		ft_putstr_fd("\033[0;32mGood map format !\n", 1);
 	else
 		print_error_close_game
-			(data, "Collectibles or exit are not reachable...");
+			(data, "all collectibles or exit are not reachable");
 }
 
 // 

@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 17:49:07 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/31 12:41:46 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:17:34 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,24 +70,24 @@ static void	player_move_on_exit(t_data *d, int key)
 	if (player_is_on_exit(d))
 	{
 		if (key == W_KEY)
-			put_tile_to_window(d, d->player.pos_x, d->player.pos_y, 11);
-		if (key == S_KEY)
 			put_tile_to_window(d, d->player.pos_x, d->player.pos_y, 10);
+		if (key == S_KEY)
+			put_tile_to_window(d, d->player.pos_x, d->player.pos_y, 9);
 		if (key == A_KEY)
-			put_tile_to_window(d, d->player.pos_x, d->player.pos_y, 12);
+			put_tile_to_window(d, d->player.pos_x, d->player.pos_y, 11);
 		if (key == D_KEY)
-			put_tile_to_window(d, d->player.pos_x, d->player.pos_y, 13);
+			put_tile_to_window(d, d->player.pos_x, d->player.pos_y, 12);
 		exit_rendered = 0;
 	}
 	else if (!player_is_on_exit(d) && d->map.number_c != 0
 		&& exit_rendered == 0)
 	{
-		put_tile_to_window(d, d->map.exit_x, d->map.exit_y, 9);
+		put_tile_to_window(d, d->map.exit_x, d->map.exit_y, 8);
 		exit_rendered = 1;
 	}
 	else if (!player_is_on_exit(d) && d->map.number_c == 0)
 	{
-		put_tile_to_window(d, d->map.exit_x, d->map.exit_y, 8);
+		put_tile_to_window(d, d->map.exit_x, d->map.exit_y, 7);
 		exit_rendered = 1;
 	}
 }

@@ -1,3 +1,4 @@
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 LDFLAGS = -L$(MINILIB_DIR) -lmlx -lXext -lX11
 
@@ -26,6 +27,7 @@ HEADERS = include/so_long.h $(MINILIB_DIR)mlx.h $(LIBFT_DIR)libft.h
 OBJS_DIR = objects
 OBJS = $(addprefix $(OBJS_DIR)/, $(notdir $(SRC:.c=.o)))
 
+.PHONY: all
 all: $(OBJS_DIR) $(LIBFT) $(MINILIB) $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(MINILIB) $(HEADERS)
@@ -47,18 +49,19 @@ $(LIBFT):
 $(MINILIB):
 		@$(MAKE) -C $(MINILIB_DIR)
 
+.PHONY: clean
 clean:
 		@echo "Cleaning object files..."
 		@rm -rf $(OBJS_DIR)
 		@$(MAKE) -C $(LIBFT_DIR) clean
 		@$(MAKE) -C $(MINILIB_DIR) clean
 
+.PHONY: fclean
 fclean: clean
 		@echo "Cleaning binaries..."
 		@rm -rf $(NAME)
 		@rm -rf $(LIBFT)
 		@rm -rf $(MINILIB)
 
+.PHONY: re
 re: fclean all
-
-.PHONY: all clean fclean re

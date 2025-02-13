@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 14:26:42 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/30 18:31:03 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:08:07 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ void	check_rules_map(t_data *d)
 	int	y;
 
 	if (d->map.height == 0 || d->map.width == 0)
-		print_error_close_game(d, "Wrong format (ns)");
+		print_error_close_game(d, "wrong format (ns)");
 	if (!is_rectangular(d->map.grid, d->map.height))
-		print_error_close_game(d, "Wrong format (nr)");
+		print_error_close_game(d, "wrong format (nr)");
 	if (!surrounded_by_wall(d->map.grid, d->map.width, d->map.height))
-		print_error_close_game(d, "Wrong format (nsbw)");
+		print_error_close_game(d, "wrong format (nsbw)");
 	if (!map_ressources(d->map.grid, d->map.width, d->map.height, d))
-		print_error_close_game(d, "Wrong format (duplicate player or exit)");
+		print_error_close_game(d, "wrong format (duplicate player or exit)");
 	y = 0;
 	while (d->map.grid[y])
 	{
@@ -42,7 +42,7 @@ void	check_rules_map(t_data *d)
 			if (d->map.grid[y][x] != '1' && d->map.grid[y][x] != '0' &&
 					d->map.grid[y][x] != 'P' && d->map.grid[y][x] != 'E'
 						&& d->map.grid[y][x] != 'C')
-				print_error_close_game(d, "Wrong format");
+				print_error_close_game(d, "wrong format");
 			x++;
 		}
 		y++;

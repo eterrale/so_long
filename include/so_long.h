@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:25:38 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/30 18:55:09 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:14:20 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "../libft/libft.h"
 # include <unistd.h>
 
-# define NUM_IMG 14
+# define NUM_IMG 13
 # define W_KEY 119
 # define S_KEY 115
 # define A_KEY 97

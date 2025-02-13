@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 20:20:06 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/30 18:30:31 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:17:07 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	render_map(t_data *data)
 		j = 0;
 		while (data->map.grid[i][j] != '\0')
 		{
-			put_tile_to_window(data, x, y, 2);
+			put_tile_to_window(data, x, y, 1);
 			handle_tile(data, x, y, data->map.grid[i][j]);
 			x += 64;
 			j++;
@@ -60,20 +60,20 @@ void	put_tile_to_window(t_data *data, int x, int y, int tile)
 static void	handle_tile(t_data *data, int x, int y, char tile)
 {
 	if (tile == '1')
-		put_tile_to_window(data, x, y, 1);
+		put_tile_to_window(data, x, y, 0);
 	else if (tile == 'P')
 	{
 		data->player.pos_x = x;
 		data->player.pos_y = y;
 		data->player.grid_x = x / 64;
 		data->player.grid_y = y / 64;
-		put_tile_to_window(data, x, y, 3);
+		put_tile_to_window(data, x, y, 2);
 	}
 	else if (tile == 'C')
-		put_tile_to_window(data, x, y, 4);
+		put_tile_to_window(data, x, y, 3);
 	else if (tile == 'E')
 	{
-		put_tile_to_window(data, x, y, 9);
+		put_tile_to_window(data, x, y, 8);
 		data->map.exit_x = x;
 		data->map.exit_y = y;
 	}

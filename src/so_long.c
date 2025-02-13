@@ -6,7 +6,7 @@
 /*   By: ekeisler <ekeisler@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:37:33 by ekeisler          #+#    #+#             */
-/*   Updated: 2025/01/30 18:30:45 by ekeisler         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:03:56 by ekeisler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,12 @@ int	main(int argc, char **argv)
 {
 	t_data	data;
 
-	if (argc > 2 || !argv[1])
-		print_error_exit("wrong path or too many arguments...");
+	if (argc != 2)
+		print_error_exit("too few arguments...");
+	if (argc > 2)
+		print_error_exit("too many arguments...");
+	if (!argv[1][0])
+		print_error_exit("no path entered...");
 	init_program(&data, argv[1]);
 	if (data.mlx)
 	{
